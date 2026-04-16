@@ -105,16 +105,22 @@
     .video-section { padding: 0 0 48px; }
     .video-wrapper {
       position: relative;
+      display: block;
       width: 100%;
-      aspect-ratio: 16 / 9;
-      background: linear-gradient(135deg, var(--purple-deep), var(--blue-dark));
       border-radius: 12px;
       border: 1px solid rgba(108, 99, 255, 0.2);
       overflow: hidden;
       cursor: pointer;
+      text-decoration: none;
       box-shadow:
         0 0 60px rgba(108, 99, 255, 0.08),
         0 20px 60px rgba(0,0,0,0.5);
+    }
+    .video-wrapper img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
     }
     .video-wrapper::before {
       content: '';
@@ -395,13 +401,14 @@
 
 <!-- ════════ VIDEO ════════ -->
 <section class="video-section container fade-in">
-  <div class="video-wrapper" role="button" aria-label="Play presentation video">
+  <a href="https://geniussongoriginal.com/video/?hopId=a4777447-f5d1-4bc3-8513-8a546510a6a8" class="video-wrapper" aria-label="Play presentation video">
+    <img src="hero-thumb.png" alt="Watch the free presentation" />
     <div class="play-btn">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
         <path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28A1 1 0 008 5.14z" fill="#1A1033"/>
       </svg>
     </div>
-  </div>
+  </a>
   <p class="video-label">▸ Watch the short presentation (no opt-in required)</p>
 </section>
 
@@ -480,7 +487,7 @@
 <section class="cta-section container fade-in">
   <h2>This short presentation changes how you see your own&nbsp;brain.</h2>
   <p class="cta-sub">No opt-in. No commitment. Just watch and decide for yourself.</p>
-  <a href="#" class="cta-btn">
+  <a href="https://geniussongoriginal.com/video/?hopId=a4777447-f5d1-4bc3-8513-8a546510a6a8" class="cta-btn">
     Watch the Free Presentation
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
   </a>
