@@ -95,52 +95,84 @@
       position: relative;
       display: block;
       width: 100%;
-      border-radius: 12px;
-      border: 1px solid rgba(108, 99, 255, 0.2);
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
       overflow: hidden;
       cursor: pointer;
       text-decoration: none;
+      background: #000;
       box-shadow:
         0 0 60px rgba(108, 99, 255, 0.08),
         0 20px 60px rgba(0,0,0,0.5);
     }
     .video-wrapper img {
-      display: block;
+      position: absolute;
+      inset: 0;
       width: 100%;
-      height: auto;
-      border-radius: 12px;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
     }
-    .video-wrapper::before {
+    .video-wrapper::after {
       content: '';
       position: absolute;
-      inset: -1px;
-      border-radius: 12px;
-      padding: 1px;
-      background: linear-gradient(135deg, rgba(212,168,75,0.3), rgba(108,99,255,0.3));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      transition: background 0.3s;
+    }
+    .video-wrapper:hover::after {
+      background: rgba(0,0,0,0.15);
     }
     .play-btn {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 72px;
-      height: 72px;
-      background: rgba(212, 168, 75, 0.9);
-      border-radius: 50%;
+      z-index: 2;
+      width: 80px;
+      height: 56px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 0 40px rgba(212, 168, 75, 0.3);
+      transition: transform 0.3s, background 0.3s;
+      border: 2px solid rgba(255,255,255,0.25);
     }
-    .play-btn svg { margin-left: 4px; }
+    .play-btn svg { margin-left: 3px; }
     .video-wrapper:hover .play-btn {
-      transform: translate(-50%, -50%) scale(1.08);
-      box-shadow: 0 0 60px rgba(212, 168, 75, 0.45);
+      transform: translate(-50%, -50%) scale(1.06);
+      background: rgba(212, 168, 75, 0.9);
+      border-color: transparent;
+    }
+    .video-wrapper:hover .play-btn svg path {
+      fill: #1A1033;
+    }
+    .video-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      height: 40px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      display: flex;
+      align-items: flex-end;
+      padding: 0 14px 8px;
+    }
+    .video-bar-dot {
+      width: 6px;
+      height: 6px;
+      background: #e74c3c;
+      border-radius: 50%;
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+    .video-bar-track {
+      flex: 1;
+      height: 3px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
     }
     .video-label {
       text-align: center;
@@ -388,9 +420,13 @@
   <a href="https://geniussongoriginal.com/video/?hopId=a4777447-f5d1-4bc3-8513-8a546510a6a8" class="video-wrapper" aria-label="Play presentation video">
     <img src="hero-thumb.png" alt="Watch the free presentation" />
     <div class="play-btn">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-        <path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28A1 1 0 008 5.14z" fill="#1A1033"/>
+      <svg width="22" height="26" viewBox="0 0 22 26" fill="none">
+        <path d="M2 1.5L20.5 13L2 24.5V1.5Z" fill="#fff"/>
       </svg>
+    </div>
+    <div class="video-bar">
+      <div class="video-bar-dot"></div>
+      <div class="video-bar-track"></div>
     </div>
   </a>
   <p class="video-label">▸ Watch the short presentation (no opt-in required)</p>
